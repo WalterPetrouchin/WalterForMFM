@@ -98,29 +98,14 @@
     </div>
 
     <main class="pt-32 pb-16">
-        <section id="intro" class="container mx-auto px-6 text-center">
+        <section id="intro" class="container mx-auto px-6 text-center pb-24">
             <div class="max-w-3xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">Thank You</h1>
                 <p class="mt-4 text-lg text-slate-600">I appreciate you taking the time to review my interactive application. I'm confident I'm the "1 person" you're looking for, and I'm excited to discuss this opportunity further.</p>
             </div>
         </section>
         
-        <section id="video" class="container mx-auto px-6 pt-24 pb-16">
-            <div class="max-w-4xl mx-auto">
-                <div class="aspect-video bg-slate-200 rounded-xl overflow-hidden shadow-2xl shadow-slate-900/10 border border-slate-200">
-                    <iframe 
-                        src="https://www.youtube.com/embed/MMUyVmgDWMQ?rel=0" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen 
-                        class="w-full h-full" 
-                        title="Thank You Video">
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <section id="next-steps" class="container mx-auto px-6 pt-16 pb-16">
+        <section id="next-steps" class="container mx-auto px-6 pb-16">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-3xl font-bold text-slate-800">Ready to Chat?</h2>
                 
@@ -128,16 +113,17 @@
                     
                     <a href="mailto:walter.petr@yahoo.com?subject=Podcast%20Role%20%7C%20Walter%20Petrouchin&body=Hi%20Walter%2C%0A%0AI've%20reviewed%20your%20application%20website%20and%20would%20like%20to%20schedule%20a%20chat.%0A%0APlease%20let%20me%20know%20what%20time%20works%20for%20you.%0A%0ABest%2C%0A" class="w-full sm:w-auto flex items-center justify-center gap-x-3 bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>Email Me to Chat</a>
                     
-                    <a href="sms:3108744247" class="w-full sm:w-auto flex items-center justify-center gap-x-3 bg-slate-200 text-slate-800 font-semibold py-3 px-8 rounded-lg hover:bg-slate-300 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                    <a href="sms:3108744247&body=Hey%20Walter%2C%20it%27s%20Shaan.%20I%20liked%20your%20site%20and%20would%20love%20to%20chat.%20When%27s%20a%20good%20time%20to%20connect%3F" class="w-full sm:w-auto flex items-center justify-center gap-x-3 bg-slate-200 text-slate-800 font-semibold py-3 px-8 rounded-lg hover:bg-slate-300 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
                         iMessage Me
                     </a>
-                    
                     <a href="https://drive.google.com/file/d/1cNyK6HGGirgl2hPEqtpKslgY3XHCfAXi/view?usp=sharing" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-x-3 bg-slate-200 text-slate-800 font-semibold py-3 px-8 rounded-lg hover:bg-slate-300 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>Download PDF</a>
                 
                 </div>
+
+
                 <div class="mt-12 text-slate-500">
                     <p class="font-semibold text-slate-700">Walter Petrouchin</p>
                     <p>walter.petr@yahoo.com | (310) 874-4247</p>
@@ -254,7 +240,6 @@
                 `;
             };
 
-            // --- THIS IS THE MODIFIED SUCCESS SCREEN ---
             const renderSuccess = () => {
                 quizModalContent.innerHTML = `
                     <div class="text-center">
@@ -270,7 +255,6 @@
                     </div>
                 `;
             };
-            // --- END OF MODIFIED SECTION ---
 
 
             quizModalContent.addEventListener('click', (e) => {
