@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My 90-Day Plan | Walter Petrouchin</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+        .section-compact {
+            min-height: auto;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* Goal card hover effect */
+        .goal-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .goal-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-wider text-slate-800">WALTER PETROUCHIN</a>
+            
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-sky-500 transition-colors">Home</a>
+                <a href="resume.html" class="hover:text-sky-500 transition-colors">My Story</a>
+                <a href="deliverables.html" class="hover:text-sky-500 transition-colors">Spec Work</a>
+                <a href="fit.html" class="hover:text-sky-500 transition-colors">My Mindset</a>
+                <a href="goals.html" class="text-sky-500 font-semibold transition-colors">My 90-Day Plan</a>
+                <a href="fun.html" class="hover:text-sky-500 transition-colors">Beyond Work</a>
+                <a href="thankyou.html" class="hover:text-sky-500 transition-colors">Thank You</a>
+            </nav>
+
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 opacity-0 pointer-events-none lg:hidden">
+        <a href="index.html" class="text-2xl font-semibold text-slate-800">Home</a>
+        <a href="resume.html" class="text-2xl font-semibold text-slate-800">My Story</a>
+        <a href="deliverables.html" class="text-2xl font-semibold text-slate-800">Spec Work</a>
+        <a href="fit.html" class="text-2xl font-semibold text-slate-800">My Mindset</a>
+        <a href="goals.html" class="text-2xl font-semibold text-sky-500">My 90-Day Plan</a>
+        <a href="fun.html" class="text-2xl font-semibold text-slate-800">Beyond Work</a>
+        <a href="thankyou.html" class="text-2xl font-semibold text-slate-800">Thank You</a>
+    </div>
+
+
+    <main class="pt-32">
+        <section id="intro" class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">My 90-Day Plan & Aspirations</h1>
+                <p class="mt-4 text-lg text-slate-600">
+                   You said I'll "learn more in 1 year with me than 4 years in a normal job." I'm ready to prove that. Here's my plan to absorb everything I can, create immediate value, and become the "1 person" you're looking for.
+                </p>
+            </div>
+        </section>
+        
+        <section id="short-term-goals" class="container mx-auto px-6 pt-24 pb-16">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">My First 90 Days as Your "1 Person"</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">My goal is to learn by doing, move fast, and make your life easier.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-8 text-left">
+                    <div class="goal-card bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                        <div class="text-sky-500 font-bold text-lg text-center">First 30 Days</div>
+                        <h3 class="text-2xl font-semibold mt-2 text-slate-800 text-center">Absorb, Edit & Assist</h3>
+                        <ul class="text-slate-600 mt-6 space-y-4 list-disc list-inside">
+                            <li><strong>Master Your Style:</strong> Deconstruct your top 50 performing clips (Shorts, Reels, TikToks) to build a "Shaan's Viral Hits" playbook. I'll master your voice, editing style, and hook strategy.</li>
+                            <li><strong>Take Over the "Boring Work":</strong> Own the entire post-production workflow immediately: editing the full pod, writing sharp show notes, timestamping, and managing all uploads. I'll deliver clean, fast, and error-free work.</li>
+                            <li><strong>Produce 3 "Ready-to-Post" Clips Daily:</strong> I won't just 'assist.' I'll listen to every episode, find the 3 best moments, and deliver 3 fully edited, captioned, and ready-to-post vertical video clips every single day.</li>
+                            <li><strong>Learn the Business:</strong> Be a sponge. I'll sit in on any meeting you'll have me, listen to your calls, and read every book you recommend. I'm here to learn "all things entrepreneurship."</li>
+                        </ul>
+                    </div>
+                    <div class="goal-card bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                        <div class="text-sky-500 font-bold text-lg text-center">First 60 Days</div>
+                        <h3 class="text-2xl font-semibold mt-2 text-slate-800 text-center">Take Ownership & Optimize</h3>
+                        <ul class="text-slate-600 mt-6 space-y-4 list-disc list-inside">
+                            <li><strong>Build a Content System:</strong> Create a simple, repeatable system (e.g., in Notion or Airtable) to manage the entire content pipeline, from raw recording to all 20+ "slices" of content (clips, carousels, tweets, thumbnails). Nothing will slip through the cracks.</li>
+                            <li><strong>A/B Test Thumbnails & Titles:</strong> I'll take full ownership of the YouTube channel. I'll design and test 3-5 new thumbnail/title combinations *before* each episode goes live to find the formula that maximizes CTR.</li>
+                            <li><strong>Propose 1 New Format:</strong> Pitch one new, simple content format (e.g., a "Best of the Week" compilation, a "Where are they now?" segment on a past idea, or a "1-min Framework" animated Short).</li>
+                        </ul>
+                    </div>
+                    <div class="goal-card bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                        <div class="text-sky-500 font-bold text-lg text-center">First 90 Days</div>
+                        <h3 class="text-2xl font-semibold mt-2 text-slate-800 text-center">Become a Content Engine & Idea Partner</h3>
+                        <ul class="text-slate-600 mt-6 space-y-4 list-disc list-inside">
+                            <li><strong>Run the Show End-to-End:</strong> I will be fully autonomous, running the entire podcast production and content distribution system. You should only have to "record and approve." My work will be so good, you don't even have to check it.</li>
+                            <li><strong>Double Content Output:</strong> With the new system running, I'll double the output of high-quality clips and content pieces without any extra time from you.</li>
+                            <li><strong>Become an Idea Partner:</strong> I'll come to you once a week with 3 new, well-researched ideas. This could be a new guest, a business to break down, a trend to analyze, or a person to meet. I'll be your "young, hungry" idea generator.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="long-term-goals" class="bg-white border-y border-slate-200">
+            <div class="container mx-auto px-6 py-24">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Long-Term Aspirations</h2>
+                    <p class="mt-4 text-slate-600">Beyond the first 90 days, my ambitions are focused on deep expertise, leadership, and a well-rounded life.</p>
+                    <div class="mt-8 text-left space-y-6 text-slate-600 bg-slate-50 p-8 rounded-xl border border-slate-200">
+                        <p><strong>Become a World-Class Media Operator:</strong> My primary goal is to master the *entire* media game, from content strategy and production to audience growth and monetization. I want to learn how to build a media brand from the inside.</p>
+                        <p><strong>Learn Entrepreneurship by Osmosis:</strong> I'm here to learn entrepreneurship by being in the room. I want to be a fly on the wall, absorb how you think, and "meet awesome people" and build a network of winners.</p>
+                        <p><strong>Grow with the Brand:</strong> I'm not just here for a 1-year "tour." I'm applying because I want to grow with you and your brand for the long term. I'm ready to become the next Steven Bartlett or Ishan Haque on your "turned out alright" list.</p>
+                        <p><strong>Build a Family:</strong> Outside of my professional ambitions, a core part of my life's vision is to get married and raise a family of 3-5 kids, building a strong and loving home.</p>
+                        <p><strong>Maintain Health & Vitality:</strong> I am blessed with excellent health, and I am committed to maintaining it. Staying in peak physical and mental condition is crucial for performing at a high level in all areas of my life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="learning-goals" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Key Areas I'm Hungry to Learn</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-slate-600">These are the specific skills I am most excited to develop by working directly with you.</p>
+                    </div>
+                    <div class="max-w-2xl mx-auto grid md:grid-cols-2 gap-8 text-center">
+                        <div class="goal-card bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center">
+                            <div class="flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mt-4 text-slate-800">Viral Storytelling & Editing</h3>
+                            <p class="text-slate-600 mt-2">How to find the 'hook' in a 60-min conversation and package it into a 60-second clip that gets 1M+ views. I'm obsessed with the craft of short-form content.</p>
+                        </div>
+                        <div class="goal-card bg-white p-8 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center">
+                             <div class="flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm-3 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mt-4 text-slate-800">Audience & Community Building</h3>
+                            <p class="text-slate-600 mt-2">How to do more than just get views—how to build a loyal, engaged community that trusts you. I want to learn the 'back end' of the creator economy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="next-page" class="section-compact bg-white border-t border-slate-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-2xl font-bold text-slate-800">Curious about who I am beyond the work?</h2>
+                <p class="mt-2 text-slate-600">The next page offers a glimpse into my life and passions.</p>
+                <div class="mt-8">
+                    <a href="fun.html" class="inline-flex items-center justify-center gap-x-3 bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                        See My Fun Side :)
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-slate-100 border-t border-slate-200">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p class="font-semibold text-slate-700">Walter Petrouchin</p>
+            <p class="text-sm">
+                <a href="mailto:walter.petr@yahoo.com" class="hover:text-sky-500 transition-colors">walter.petr@yahoo.com</a> | (310) 874-4247
+            </p>
+            <p class="text-sm mt-1">
+                <a href="https://www.linkedin.com/in/walterpetrouchin/" target="_blank" rel="noopener noreferrer" class="text-sky-500 hover:underline">LinkedIn Profile</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Mobile Menu Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+            const toggleMobileMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('pointer-events-none');
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('pointer-events-none');
+                        document.body.style.overflow = 'auto';
+                    }, 300);
+                } else {
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                mobileMenuLinks.forEach(link => link.addEventListener('click', toggleMobileMenu));
+                mobileMenu.addEventListener('click', (event) => {
+                    if (event.target === mobileMenu) toggleMobileMenu();
+                });
+                window.addEventListener('keydown', (e) => {
+                    const isMenuOpen = !mobileMenu.classList.contains('pointer-events-none');
+                    if (e.key === 'Escape' && isMenuOpen) toggleMobileMenu();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

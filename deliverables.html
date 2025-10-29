@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spec Work | Walter Petrouchin</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+        .section-compact {
+            min-height: auto;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-container {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .modal-overlay.hidden {
+            pointer-events: none;
+            opacity: 0;
+        }
+        .modal-overlay.hidden .modal-container {
+            transform: scale(0.95);
+        }
+        
+        /* --- PRESENTATION STYLES (within modal) --- */
+        .presentation-container {
+            width: 100%;
+            max-width: 64rem;
+            aspect-ratio: 16 / 9;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .slides-wrapper {
+            flex-grow: 1;
+            position: relative;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2rem; /* p-8 for smaller screens */
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+        .slide.hidden {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
+        }
+        .accent-purple { color: #8b5cf6; }
+        .icon-container { height: 150px; margin-bottom: 1rem; }
+        .profile-pic { width: 150px; height: 150px; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        .nav-container { display: block; position: absolute; bottom: 0; left: 0; right: 0; }
+        .progress-bar { position: absolute; bottom: 0; left: 0; height: 6px; background-color: #8b5cf6; transition: width 0.3s ease-out; }
+        .nav-button:focus-visible { outline: 4px solid #c4b5fd; outline-offset: 4px; }
+        .final-button { display: inline-block; background-color: #f1f5f9; color: #334155; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; transition: all 0.2s ease-in-out; border: 2px solid #e2e8f0; text-decoration: none; }
+        .final-button:hover { background-color: #e2e8f0; transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        .final-button-primary { background-color: #8b5cf6; color: white; border-color: transparent; }
+        .final-button-primary:hover { background-color: #7c3aed; }
+        
+        @media (min-width: 768px) {
+            .slide { padding: 4rem; }
+            .icon-container { height: 200px; margin-bottom: 2rem; }
+            .profile-pic { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 glass-effect shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-wider text-slate-800">WALTER PETROUCHIN</a>
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-sky-500 transition-colors">Home</a>
+                <a href="resume.html" class="hover:text-sky-500 transition-colors">My Story</a>
+                <a href="deliverables.html" class="text-sky-500 font-semibold transition-colors">Spec Work</a>
+                <a href="fit.html" class="hover:text-sky-500 transition-colors">My Mindset</a>
+                <a href="goals.html" class="hover:text-sky-500 transition-colors">My 90-Day Plan</a>
+                <a href="fun.html" class="hover:text-sky-500 transition-colors">Beyond Work</a>
+                <a href="thankyou.html" class="hover:text-sky-500 transition-colors">Thank You</a>
+            </nav>
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none z-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 z-30 bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 opacity-0 pointer-events-none lg:hidden">
+        <a href="index.html" class="text-2xl font-semibold text-slate-800">Home</a>
+        <a href="resume.html" class="text-2xl font-semibold text-slate-800">My Story</a>
+        <a href="deliverables.html" class="text-2xl font-semibold text-sky-500">Spec Work</a>
+        <a href="fit.html" class="text-2xl font-semibold text-slate-800">My Mindset</a>
+        <a href="goals.html" class="text-2xl font-semibold text-slate-800">My 90-Day Plan</a>
+        <a href="fun.html" class="text-2xl font-semibold text-slate-800">Beyond Work</a>
+        <a href="thankyou.html" class="text-2xl font-semibold text-slate-800">Thank You</a>
+    </div>
+
+    <main class="pt-32">
+        <section id="intro" class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">Spec Work & Deliverables</h1>
+                <p class="mt-4 text-lg text-slate-600">
+                    You asked for someone who "loves business, loves content" and has skills. While my background is in strategy, these deliverables show you *how I think* and are proof of the 'young, hungry, and talented' mindset I'll bring to your podcast.
+                </p>
+            </div>
+        </section>
+        
+        <section id="deliverables-grid" class="container mx-auto px-6 pt-24 pb-16">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <a href="https://drive.google.com/file/d/1ySMl4OD0QhPG8Tt1YAFsYkP2oWtwISoB/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="group block bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-left transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-sky-400">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-lg bg-slate-100 flex items-center justify-center ring-1 ring-slate-200 group-hover:bg-sky-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-6">Strategic Memo</h3>
+                        <p class="text-slate-600 mt-2">This shows my ability to synthesize dense, complex topics into a clear, actionable plan. It's the same skill I'll use to find the best insights in a 2-hour podcast and turn them into a 60-second viral clip.</p>
+                        <div class="mt-6 font-semibold text-sky-500 group-hover:underline">View Memo &rarr;</div>
+                    </a>
+
+                    <button id="view-deck-btn" class="group block bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-left transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-sky-400">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-lg bg-slate-100 flex items-center justify-center ring-1 ring-slate-200 group-hover:bg-sky-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3h3m-3 4h3m-3 4h3m-3 4h3" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-6">Systems Deck</h3>
+                        <p class="text-slate-600 mt-2">This deck shows how I analyze a broken process and build a new, automated system to get results. It's exactly how I'll approach your content workflow, turning 1 episode into 20+ high-quality pieces of content.</p>
+                        <div class="mt-6 font-semibold text-sky-500 group-hover:underline">View Deck &rarr;</div>
+                    </button>
+
+                    <a href="https://docs.google.com/spreadsheets/d/1-Juz9s4la05DOeegntJjgvlCElcWG2lzGg8xXKbklSA/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="group block bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-left transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-sky-400">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-lg bg-slate-100 flex items-center justify-center ring-1 ring-slate-200 group-hover:bg-sky-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h3m-3 0v-3m-3 3h3m-3 0v-3m-3 3h3m-3 0v-3M15 3H9a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2V5a2 2 0 00-2-2z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800 mt-6">Interactive Spreadsheet</h3>
+                        <p class="text-slate-600 mt-2">I built this game based on Alex Hormozi's $100M Money Model principles. This proves I 'love business, love content, and want to get paid to be obsessed with those two things.' Plus, it's fun!</p>
+                        <div class="mt-6 font-semibold text-sky-500 group-hover:underline">View Spreadsheet &rarr;</div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="next-page" class="section-compact bg-white border-t border-slate-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-2xl font-bold text-slate-800">Beyond my work, I'm confident I have the mindset you're looking for.</h2>
+                <p class="mt-2 text-slate-600">The next page details my "young, hungry, and talented" mindset in action.</p>
+                <div class="mt-8">
+                    <a href="fit.html" class="inline-flex items-center justify-center gap-x-3 bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                        See My Mindset
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p class="font-semibold text-slate-700">Walter Petrouchin</p>
+            <p class="text-sm">
+                <a href="mailto:walter.petr@yahoo.com" class="hover:text-sky-500 transition-colors">walter.petr@yahoo.com</a> | (310) 874-4247
+            </p>
+            <p class="text-sm mt-1">
+                <a href="https://www.linkedin.com/in/walterpetrouchin/" target="_blank" rel="noopener noreferrer" class="text-sky-500 hover:underline">LinkedIn Profile</a>
+            </p>
+        </div>
+    </footer>
+
+    <div id="deck-modal" class="modal-overlay hidden fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center p-4">
+        <button id="close-deck-modal" class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div id="modal-content" class="modal-container w-full h-full max-h-[90vh] max-w-[90vw] flex items-center justify-center">
+             </div>
+    </div>
+
+    <template id="presentation-template">
+        <div class="presentation-container">
+            <div class="absolute top-6 right-6 text-xs text-slate-400 font-bold tracking-wider hidden md:block">FOR: SHAAN PURI</div>
+            <div class="slides-wrapper" id="slides-wrapper"></div>
+            <div class="nav-container">
+                <div class="p-6 flex justify-between items-center">
+                    <div id="slide-counter" class="text-sm text-slate-400 font-mono"></div>
+                    <div class="flex items-center gap-4">
+                        <button id="prev-btn" class="nav-button bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors rounded-full p-3 disabled:opacity-50 disabled:cursor-not-allowed"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                        <button id="next-btn" class="nav-button bg-slate-800 text-white hover:bg-slate-700 transition-colors rounded-full p-3"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                    </div>
+                </div>
+                <div class="bg-slate-200 h-[6px] w-full"><div id="progress-bar" class="progress-bar"></div></div>
+            </div>
+        </div>
+    </template>
+    
+    <script>
+        // --- Main Page Script ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toggleMobileMenu = () => {
+                const isMenuOpen = !mobileMenu.classList.contains('pointer-events-none');
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'auto';
+                } else {
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMobileMenu));
+            }
+
+            // --- DECK MODAL LOGIC ---
+            const deckModal = document.getElementById('deck-modal');
+            const modalContent = document.getElementById('modal-content');
+            const viewDeckBtn = document.getElementById('view-deck-btn');
+            const closeDeckModalBtn = document.getElementById('close-deck-modal');
+            const presentationTemplate = document.getElementById('presentation-template');
+            let presentationInitialized = false;
+
+            const openDeckModal = () => {
+                if (!presentationInitialized) {
+                    initializePresentation();
+                    presentationInitialized = true;
+                }
+                deckModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            };
+
+            const closeDeckModal = () => {
+                deckModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            };
+
+            viewDeckBtn.addEventListener('click', openDeckModal);
+            closeDeckModalBtn.addEventListener('click', closeDeckModal);
+            deckModal.addEventListener('click', (event) => {
+                if (event.target === deckModal) {
+                    closeDeckModal();
+                }
+            });
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !deckModal.classList.contains('hidden')) {
+                    closeDeckModal();
+                }
+            });
+
+            // --- PRESENTATION SCRIPT (to be initialized on modal open) ---
+            
+            /**
+             * Creates an SVG icon string from a path data string.
+             * This function was missing, causing the presentation script to fail.
+             * @param {string} pathData The 'd' attribute data for the SVG <path> element.
+             * @returns {string} An HTML string representing the SVG icon.
+             */
+            function createIcon(pathData) {
+                return `<svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="${pathData}" />
+                        </svg>`;
+            }
+
+            function initializePresentation() {
+                const content = presentationTemplate.content.cloneNode(true);
+                modalContent.appendChild(content);
+
+                 const slidesData = [
+                { text: "Walter Petrouchin Sample Deck", image: `https://res.cloudinary.com/dq7glunwv/image/upload/v1755753764/28_mxz4yv.jpg`, subtext: `Application for Podcast Role` },
+                { text: "This is a story about a process that <span class='accent-purple'>leaked money</span>.", icon: createIcon("M4 10h16M4 10L6 20h12l2-10M8 6h8 M12 14v2 M10 14v2 M14 14v2") },
+                { text: "And how I turned that leak into an <span class='accent-purple'>engine</span> for new business.", icon: createIcon("M12 4v16m8-8H4 M12 4a8 8 0 00-8 8v0a8 8 0 008 8v0a8 8 0 008-8v0a8 8 0 00-8-8z") },
+                { text: "The result? A <span class='accent-purple'>shorter</span> sales cycle and a <span class='accent-purple'>higher</span> conversion rate.", icon: createIcon("M13 7h8m0 0v8m0-8l-8 8-4-4-6 6") },
+                { text: "A quick <span class='accent-purple'>note</span> before we begin.", icon: createIcon("M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z") },
+                { text: "I didn't make this deck when I implemented this <span class='accent-purple'>change</span>.", icon: createIcon("M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z") },
+                { text: "But I wanted to show you my <span class='accent-purple'>problem-solving process</span>.", icon: createIcon("M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z") },
+                { text: "So I'm presenting this as if I were solving the problem <span class='accent-purple'>today</span>.", icon: createIcon("M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4") },
+                { text: "The Goal: Increase lead conversion...", icon: createIcon("M13 7h8m0 0v8m0-8l-8 8-4-4-6 6") },
+                { text: "...<span class='accent-purple'>quicker</span>...", icon: createIcon("M13 10V3L4 14h7v7l9-11h-7z") },
+                { text: "...while <span class='accent-purple'>lowering CAC</span>.", subtext: "(saving money)", icon: createIcon("M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z") },
+                { text: "The problem took place at trade shows.", subtext: "(our primary advertising)", icon: createIcon("M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z") },
+                { text: "We were losing <span class='accent-purple'>money</span>.", icon: createIcon("M4 4h4v16H4V4zm6 4h4v12h-4V8zm6 4h4v8h-4v-8z") },
+                { text: "Or at least... not making the <span class='accent-purple'>return</span> we could have been.", icon: createIcon("M13 17h8m0 0V9m0 8l-8-8-4 4-6-6") },
+                { text: "Here was the <span class='accent-purple'>'Before'</span> state.", icon: createIcon("M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01") },
+                { text: "We manually wrote down every lead's <span class='accent-purple'>contact info</span>.", icon: createIcon("M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z") },
+                { text: "Our team spent <span class='accent-purple'>3-4 days</span> on manual data entry after the show ended.", icon: createIcon("M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z") },
+                { text: "Our lead-to-bid rate was only <span class='accent-purple'>14%</span>.", icon: createIcon("M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z") },
+                { text: "This delay meant leads got <span class='accent-purple'>colder</span>.", icon: createIcon("M12 2L12 22 M2 12L22 12 M5 5L19 19 M5 19L19 5") },
+                { text: "They became less <span class='accent-purple'>responsive</span>.", icon: createIcon("M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11") },
+                { text: "We <span class='accent-purple'>converted</span> fewer of them.", icon: createIcon("M21 12a9 9 0 11-18 0 9 9 0 0118 0z M10 10h.01M14 10h.01 M9 15a4 4 0 108 0H9z") },
+                { text: "Our margins <span class='accent-purple'>shrank</span> unnecessarily.", icon: createIcon("M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z") },
+                { text: "Which made us less <span class='accent-purple'>profitable</span>.", icon: createIcon("M13 17h8m0 0V9m0 8l-8-8-4 4-6-6") },
+                { text: "And our sales cycle was over <span class='accent-purple'>7 months</span> long.", subtext: "(a long time to recoup ad spend)", icon: createIcon("M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z") },
+                { text: "So I <span class='accent-purple'>fixed it</span>.", icon: createIcon("M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z") },
+                { text: "I built an <span class='accent-purple'>automated</span> system to capture, tag, and nurture leads instantly.", icon: createIcon("M13 10V3L4 14h7v7l9-11h-7z") },
+                { text: "Step 1: We used a tablet to <span class='accent-purple'>scan</span> badges instantly.", icon: createIcon("M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z") },
+                { text: "Step 2: The info was sent <span class='accent-purple'>directly</span> to our CRM.", icon: createIcon("M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15") },
+                { text: "Step 3: Each lead was automatically <span class='accent-purple'>tagged</span>.", icon: createIcon("M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z") },
+                { text: "Step 4: Which triggered a tailored email <span class='accent-purple'>nurture sequence</span>.", icon: createIcon("M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z") },
+                { text: "Step 5: Which meant everyone was <span class='accent-purple'>happier</span>, quicker.", icon: createIcon("M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z") },
+                { text: "The results were <span class='accent-purple'>immediate</span>.", icon: createIcon("M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122") },
+                { text: "Lead-to-bid rate jumped from 14% to <span class='accent-purple'>19%</span>.", icon: createIcon("M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z M15 12a3 3 0 11-6 0 3 3 0 016 0z") },
+                { text: "The sales cycle shrank from 7 months to <span class='accent-purple'>under 6</span>.", icon: createIcon("M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z") },
+                { text: "That was a <span class='accent-purple'>38-day</span> reduction in conversion time.", icon: createIcon("M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z") },
+                { text: "We saw a <span class='accent-purple'>+36%</span> increase in prospect responsiveness.", icon: createIcon("M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z") },
+                { text: "And a <span class='accent-purple'>100%</span> reduction in manual data entry.", icon: createIcon("M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4") },
+                { text: "And a secret <span class='accent-purple'>benefit</span>...", icon: createIcon("M20 12v10H4V12 M20 8H4a2 2 0 00-2 2v2h20v-2a2 2 0 00-2-2z M12 22V8 M8 12a4 4 0 014-4 4 4 0 014 4") },
+                { text: "We looked more <span class='accent-purple'>professional</span>.", icon: createIcon("M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z") },
+                { text: "My biggest <span class='accent-purple'>takeaways</span>?", icon: createIcon("M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4") },
+                { text: "Simple automation creates <span class='accent-purple'>outsized</span> returns.", icon: createIcon("M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z") },
+                { text: "The first touchpoint is the <span class='accent-purple'>most important</span>.", icon: createIcon("M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z") },
+                { text: "<span class='accent-purple'>Speed</span> is a massive competitive advantage.", icon: createIcon("M13 10V3L4 14h7v7l9-11h-7z") },
+                { text: "Removing friction for the customer removes friction for the <span class='accent-purple'>sale</span>.", icon: createIcon("M17 8l4 4m0 0l-4 4m4-4H3") },
+                { text: "A professional process builds <span class='accent-purple'>trust</span>.", icon: createIcon("M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z") },
+                { 
+                    text: "Thank you.", 
+                    icon: createIcon("M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"),
+                    buttons: [
+                        { text: "View Spreadsheet Sample", url: "httpss://docs.google.com/spreadsheets/d/1-Juz9s4la05DOeegntJjgvlCElcWG2lzGg8xXKbklSA/edit?usp=sharing" },
+                    ]
+                },
+            ];
+
+                const slidesWrapper = modalContent.querySelector('#slides-wrapper');
+                const prevBtn = modalContent.querySelector('#prev-btn');
+                const nextBtn = modalContent.querySelector('#next-btn');
+                const slideCounter = modalContent.querySelector('#slide-counter');
+                const progressBar = modalContent.querySelector('#progress-bar');
+                let currentSlide = 0;
+
+                function renderSlides() {
+                    let slidesHTML = '';
+                    slidesData.forEach((slide, index) => {
+                        let contentHTML = '';
+                        let subtextHTML = slide.subtext ? `<h2 class="text-xl md:text-2xl font-bold text-slate-500 mt-4 italic">${slide.subtext}</h2>` : '';
+                        let buttonsHTML = '';
+
+                        if (slide.buttons) {
+                            buttonsHTML = `<div class="mt-12 flex justify-center">
+                                <a href="${slide.buttons[0].url}" target="_blank" class="final-button final-button-primary">${slide.buttons[0].text}</a>
+                            </div>`;
+                        }
+
+                        if (slide.image) {
+                            contentHTML = `<div class="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
+                                <div>
+                                    <h1 class="text-4xl md:text-6xl font-black text-slate-800 leading-tight tracking-tight text-center md:text-left">${slide.text}</h1>
+                                    ${subtextHTML}
+                                </div>
+                                <img src="${slide.image}" alt="Walter Petrouchin" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/200x200/e2e8f0/334155?text=WP';">
+                            </div>`;
+                        } else {
+                            contentHTML = `<div class="icon-container flex items-center justify-center">${slide.icon}</div>
+                            <div>
+                                <h1 class="text-4xl md:text-6xl font-black text-slate-800 leading-tight tracking-tight">${slide.text}</h1>
+                                ${subtextHTML}
+                            </div>
+                            ${buttonsHTML}`;
+                        }
+
+                        slidesHTML += `<div id="slide-${index}" class="slide ${index !== 0 ? 'hidden' : ''}">${contentHTML}</div>`;
+                    });
+                    slidesWrapper.innerHTML = slidesHTML;
+                }
+
+                function updateView() {
+                    slidesWrapper.querySelectorAll('.slide').forEach((slide, index) => {
+                        slide.classList.toggle('hidden', index !== currentSlide);
+                    });
+                    slideCounter.textContent = `${currentSlide + 1} / ${slidesData.length}`;
+                    prevBtn.disabled = currentSlide === 0;
+                    nextBtn.disabled = currentSlide === slidesData.length - 1;
+                    const progressPercentage = ((currentSlide + 1) / slidesData.length) * 100;
+                    progressBar.style.width = `${progressPercentage}%`;
+                }
+
+                const keydownHandler = (e) => {
+                    if (deckModal.classList.contains('hidden')) return;
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextBtn.click();
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevBtn.click();
+                };
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentSlide < slidesData.length - 1) {
+                        currentSlide++;
+                        updateView();
+                    }
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateView();
+                    }
+                });
+                
+                window.addEventListener('keydown', keydownHandler);
+                
+                renderSlides();
+                updateView();
+            }
+        });
+    </script>
+</body>
+</html>
