@@ -3,34 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walter Petrouchin | Application for Shaan Puri</title>
+    <title>Site No Longer Active</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Custom CSS for styling and animations -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* slate-50 */
             color: #0f172a; /* slate-900 */
         }
-        /* section class removed */
-        /* New class for more compact sections */
-        .section-compact {
-            min-height: auto;
-            padding-top: 6rem;
-            padding-bottom: 6rem;
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
         }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        /* Updated highlight-text class for dynamic gradient */
         .highlight-text {
             background: linear-gradient(120deg, #0ea5e9, #8b5cf6, #ec4899, #0ea5e9);
             background-size: 300% 300%;
@@ -38,7 +35,6 @@
             -webkit-text-fill-color: transparent;
             animation: gradient-move 8s ease-in-out infinite;
         }
-        /* Bouncing Arrow Removed */
 
         /* Keyframes for the gradient animation */
         @keyframes gradient-move {
@@ -46,316 +42,25 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Bounce Animation Removed */
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .memo-grid {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 0.5rem 1rem;
-        }
-        .memo-label {
-            font-weight: 600;
-            color: #64748b; /* slate-500 */
-        }
-        /* Mobile Menu Transition */
-        #mobile-menu {
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        /* --- Desktop Experience Overlay Styles --- */
-        #desktop-overlay {
-            transition: opacity 0.5s ease-in-out;
-        }
-        #desktop-overlay-content {
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            animation: fadeInContent 0.8s ease-out forwards;
-        }
-        @keyframes fadeInContent {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        .countdown-bar-inner {
-            animation: countdown 10s linear forwards;
-        }
-        @keyframes countdown {
-            from { width: 100%; }
-            to { width: 0%; }
-        }
     </style>
 </head>
 <body class="antialiased">
 
-    <div id="desktop-overlay" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-lg flex items-center justify-center p-6 text-center hidden">
-        <div id="desktop-overlay-content" class="relative bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full">
-            <div class="flex justify-center items-center h-16 w-16 rounded-full bg-slate-100 mx-auto mb-6 ring-4 ring-slate-200">
-                <svg class="h-8 w-8 text-slate-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-1.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h13.5A2.25 2.25 0 0121 5.25z" />
-                </svg>
-            </div>
-            <h2 class="text-2xl font-bold text-slate-800">Best experienced on desktop</h2>
-            <p class="text-slate-600 mt-3">This site is best viewed on a larger screen to see the full layout.</p>
-            <p id="countdown-text" class="text-xs text-slate-400 mt-6">Continuing to mobile in <span id="countdown-timer" class="font-semibold">10</span> seconds...</p>
-            <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-200 rounded-b-2xl overflow-hidden">
-                <div class="h-full bg-sky-500 countdown-bar-inner"></div>
-            </div>
-        </div>
-    </div>
-
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-wider text-slate-800">WALTER PETROUCHIN</a>
-            
-            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-600">
-                <a href="index.html" class="text-sky-500 font-semibold transition-colors">Home</a>
-                <a href="resume.html" class="hover:text-sky-500 transition-colors">My Story</a>
-                <a href="deliverables.html" class="hover:text-sky-500 transition-colors">Spec Work</a>
-                <a href="fit.html" class="hover:text-sky-500 transition-colors">My Mindset</a>
-                <a href="goals.html" class="hover:text-sky-500 transition-colors">My 90-Day Plan</a>
-                <a href="fun.html" class="hover:text-sky-500 transition-colors">Beyond Work</a>
-                <a href="thankyou.html" class="hover:text-sky-500 transition-colors">Thank You</a>
-            </nav>
-
-            <div class="lg:hidden">
-                <button id="mobile-menu-button" class="text-slate-800 focus:outline-none z-50">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-6 opacity-0 pointer-events-none lg:hidden">
-        <a href="index.html" class="text-2xl font-semibold text-sky-500">Home</a>
-        <a href="resume.html" class="text-2xl font-semibold text-slate-800">My Story</a>
-        <a href="deliverables.html" class="text-2xl font-semibold text-slate-800">Spec Work</a>
-        <a href="fit.html" class="text-2xl font-semibold text-slate-800">My Mindset</a>
-        <a href="goals.html" class="text-2xl font-semibold text-slate-800">My 90-Day Plan</a>
-        <a href="fun.html" class="text-2xl font-semibold text-slate-800">Beyond Work</a>
-        <a href="thankyou.html" class="text-2xl font-semibold text-slate-800">Thank You</a>
-    </div>
-
-    <section id="hook" class="section-compact pt-32 pb-16 flex flex-col relative overflow-hidden">
+    <!-- Main Content Section -->
+    <section class="section relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50"></div>
-        <div class="text-center z-10 fade-in">
+        <div class="z-10">
             <h1 class="font-extrabold tracking-tight text-slate-900">
-                <span class="block text-xl md:text-2xl lg:text-3xl font-medium text-slate-600">
-                    An application to work with Uncle Shaan on the
-                </span>
-                <span class="block mt-2 text-5xl md:text-7xl lg:text-8xl highlight-text">My First Million Podcast</span>
+                <span class="block text-4xl md:text-6xl lg:text-7xl highlight-text pb-4">Thank You For Visiting</span>
             </h1>
-            <p class="mt-8 text-sm text-slate-500">By Walter Petrouchin</p>
-        </div>
-    </section>
-    <section id="memo" class="section-compact bg-slate-50 border-y border-slate-200">
-        <div class="container mx-auto px-6 fade-in">
-            <div class="text-center mb-12">
-                <h2 class="text-sm font-bold uppercase tracking-widest text-sky-500">My Approach</h2>
-                <p class="mt-3 text-3xl md:text-4xl font-bold text-slate-900">My Work In Action</p>
-                <p class="mt-4 max-w-2xl mx-auto text-slate-600">I believe in showing, not telling. This site is designed to help you get to know me, demonstrating the quality, initiative, and obsession I'll bring to the podcast.</p>
-            </div>
-            <a href="deliverables.html" class="block group">
-                <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl shadow-slate-900/10 border border-slate-200 cursor-pointer transition-all duration-300 group-hover:shadow-sky-100/80 group-hover:shadow-2xl group-hover:scale-[1.02]">
-                    <div class="memo-grid items-center mb-6 text-sm md:text-base">
-                        <p class="memo-label">TO:</p><p class="text-slate-800">Shaan Puri</p>
-                        <p class="memo-label">FROM:</p><p class="text-slate-800">Walter Petrouchin</p>
-                        <p class="memo-label">DATE:</p><p id="memo-date" class="text-slate-800"></p>
-                        <p class="memo-label">SUBJECT:</p><p class="font-semibold text-slate-900">Application to be the 1 person for the podcast</p>
-                    </div>
-                    <hr class="border-slate-200 my-8">
-                    <div class="prose prose-slate max-w-none text-slate-600 space-y-4">
-                        <p><strong>Why:</strong> To show you I'm the "young, hungry, and talented" person you're looking for, a standard resume is insufficient. I hope it's the best application you've ever received.</p>
-                        <p><strong>What:</strong> My mission is to prove I have the skills, obsession, and drive to take your podcast content to the next level.</p>
-                        <p><strong>How:</strong> This website serves as a comprehensive deliverable. It's my 'show, don't tell.' Here, you will find:<br>
-                        • A proactive 90-day plan to create immediate value.<br>
-                        • Proof of my 'young, hungry, and talented' mindset.<br>
-                        • My full story and background.<br>
-                        • A glimpse into who I am beyond work.</p>
-                        <p><strong>Now:</strong> I invite you to explore this site, starting with the spec work examples. I'm ready to chat whenever and can start immediately.</p>
-                        <p class="pt-4">Thank you for the opportunity and your consideration.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-    <main>
-        <section id="next-page" class="section-compact bg-white border-b border-slate-200">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-2xl font-bold text-slate-800">Get to know me:</h2>
-                <p class="mt-2 text-slate-600">The next page contains my resume + story.</p>
-                <div class="mt-8">
-                    <a href="resume.html" class="inline-flex items-center justify-center gap-x-3 bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition-colors text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                        Get to know me.
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-100 border-t border-slate-200">
-        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
-            <p class="font-semibold text-slate-700">Walter Petrouchin</p>
-            <p class="text-sm">
-                <a href="mailto:walter.petr@yahoo.com" class="hover:text-sky-500 transition-colors">walter.petr@yahoo.com</a> | (310) 874-4247
-            </p>
-            <p class="text-sm mt-1">
-                <a href="https://www.linkedin.com/in/walterpetrouchin/" target="_blank" rel="noopener noreferrer" class="text-sky-500 hover:underline">LinkedIn Profile</a>
+            <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-slate-600">
+                This website is no longer active. I appreciate you stopping by!
             </p>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Desktop Experience Overlay Logic ---
-            const overlay = document.getElementById('desktop-overlay');
-            const countdownTimerEl = document.getElementById('countdown-timer');
-            const countdownTextEl = document.getElementById('countdown-text');
-            const DESKTOP_BREAKPOINT = 1024; // lg breakpoint in Tailwind
-
-            let countdownInterval;
-            let mainTimeout;
-
-            const hideOverlay = () => {
-                clearInterval(countdownInterval);
-                clearTimeout(mainTimeout);
-                overlay.style.opacity = '0';
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 500); // Match CSS transition duration
-            };
-
-            if (window.innerWidth < DESKTOP_BREAKPOINT) {
-                overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-
-                let secondsLeft = 10;
-                countdownTimerEl.textContent = secondsLeft;
-
-                countdownInterval = setInterval(() => {
-                    secondsLeft--;
-                    countdownTimerEl.textContent = secondsLeft;
-                    if (secondsLeft <= 0) {
-                        clearInterval(countdownInterval);
-                        countdownTextEl.textContent = "Continuing to mobile...";
-                    }
-                }, 1000);
-
-                mainTimeout = setTimeout(hideOverlay, 10000);
-
-                // Allow user to click to exit early
-                overlay.addEventListener('click', hideOverlay);
-            }
-
-
-            // --- Set Memo Date ---
-            const memoDate = document.getElementById('memo-date');
-            if(memoDate) {
-                memoDate.textContent = new Date().toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-            }
-
-            // --- Header Scroll Effect ---
-            const header = document.getElementById('main-header');
-            if (header) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        header.classList.add('glass-effect', 'shadow-lg');
-                    } else {
-                        header.classList.remove('glass-effect', 'shadow-lg');
-                    }
-                });
-            }
-
-            // --- Fade-in on Scroll Animation ---
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = {
-                threshold: 0.2,
-                rootMargin: "0px 0px -50px 0px"
-            };
-            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        appearOnScroll.unobserve(entry.target);
-                    }
-                });
-            }, appearOptions);
-
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
-            });
-            
-            // --- Mobile Menu Logic (Simplified) ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-
-            const toggleMobileMenu = () => {
-                const isMenuOpen = !mobileMenu.classList.contains('pointer-events-none');
-                if (isMenuOpen) {
-                    // Close menu
-                    mobileMenu.classList.add('opacity-0');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('pointer-events-none');
-                        document.body.style.overflow = 'auto';
-                    }, 300);
-                } else {
-                    // Open menu
-                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-                    document.body.style.overflow = 'hidden';
-                }
-            };
-
-            if (mobileMenuButton && mobileMenu) {
-                // Event Listeners
-                mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-                // Close menu when a link is clicked
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', toggleMobileMenu);
-                });
-
-                // Close menu when clicking on the overlay background
-                mobileMenu.addEventListener('click', (event) => {
-                    if (event.target === mobileMenu) {
-                        toggleMobileMenu();
-                    }
-                });
-
-                // Close menu on escape key press for accessibility
-                window.addEventListener('keydown', (e) => {
-                    const isMenuOpen = !mobileMenu.classList.contains('pointer-events-none');
-                    if (e.key === 'Escape' && isMenuOpen) {
-                        toggleMobileMenu();
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
+
+
